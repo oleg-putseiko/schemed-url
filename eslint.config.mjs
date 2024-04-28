@@ -1,5 +1,6 @@
 import eslintJs from '@eslint/js';
 import eslintConfigPrettier from 'eslint-config-prettier';
+import tsEslint from 'typescript-eslint';
 
 /**
  * @type {import('eslint').Linter.FlatConfig}
@@ -7,6 +8,7 @@ import eslintConfigPrettier from 'eslint-config-prettier';
 export default [
   eslintJs.configs.recommended,
   eslintConfigPrettier,
+  ...tsEslint.configs.recommended,
   {
     rules: {
       'array-callback-return': ['error', { checkForEach: true }],
@@ -22,6 +24,32 @@ export default [
       'prefer-exponentiation-operator': 'warn',
       'require-unicode-regexp': 'warn',
       'no-undef': 'off',
+    },
+  },
+  {
+    files: ['**/*.ts'],
+    rules: {
+      '@typescript-eslint/consistent-type-imports': [
+        'error',
+        {
+          prefer: 'type-imports',
+          fixStyle: 'inline-type-imports',
+        },
+      ],
+      '@typescript-eslint/explicit-module-boundary-types': 'off',
+      '@typescript-eslint/no-empty-function': 'error',
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        {
+          vars: 'all',
+          varsIgnorePattern: '^_',
+          args: 'after-used',
+          argsIgnorePattern: '^_',
+        },
+      ],
+      '@typescript-eslint/prefer-as-const': 'warn',
+      '@typescript-eslint/prefer-includes': 'warn',
+      '@typescript-eslint/switch-exhaustiveness-check': 'error',
     },
   },
   {
