@@ -12,12 +12,14 @@
     "url": "https://github.com/oleg-putseiko/schemed-url/issues"
   },
   "scripts": {
+    "build": "tsc",
     "format": "prettier -c .",
     "format:fix": "prettier -w .",
     "lint": "eslint . && yarn format",
     "lint:fix": "eslint . --fix && yarn format:fix",
     "lint:strict": "eslint . --max-warnings=0 && yarn format",
-    "prepare": "husky"
+    "prepare": "husky",
+    "typecheck": "tsc --noEmit --incremental false"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",
@@ -27,7 +29,8 @@
     "eslint-config-prettier": "^9.1.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
-    "prettier": "^3.2.5"
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.5"
   },
   "engines": {
     "node": "18.18.0",
