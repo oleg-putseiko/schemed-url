@@ -26,6 +26,12 @@ export default [
   },
   {
     files: ['**/*.ts'],
+    languageOptions: {
+      parser: tsEslint.parser,
+      parserOptions: {
+        project: true,
+      },
+    },
     rules: {
       '@typescript-eslint/consistent-type-imports': [
         'error',
